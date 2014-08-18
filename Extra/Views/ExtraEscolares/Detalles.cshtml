@@ -1,0 +1,65 @@
+﻿@model Extra.Models.ExtraEscolares
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Detalles</title>
+</head>
+<body>
+    <fieldset>
+        <legend>ExtraEscolares</legend>
+        <div class="display-field">
+            @Html.HiddenFor(model => model.idExtraescolar)
+        </div>
+    
+        <div class="display-label">Actividad</div>
+        <div class="display-field">
+            @Html.DropDownList("idActividad")
+        </div>
+    
+        <div class="display-label">Instructor</div>
+        <div class="display-field">
+            @Html.DropDownList("idInstructor" )
+        </div>
+    
+        <div class="display-label">horario lunes</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.horalunes)
+        </div>
+    
+        <div class="display-label">horario martes</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.horamartes)
+        </div>
+    
+        <div class="display-label">horario miercoles</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.horamiercoles)
+        </div>
+    
+        <div class="display-label">horario jueves</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.hormajueves)
+        </div>
+    
+        <div class="display-label">horario viernes</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.horaviernes)
+        </div>
+    
+        <div class="display-label">Periodo</div>
+        <div class="display-field">
+            @Html.DropDownList("idPeriodo")
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Modificar", "Modificar", new {  id=Model.idExtraescolar }) |
+        @Html.ActionLink("Regresar", "Index")
+    </p>
+</body>
+</html>

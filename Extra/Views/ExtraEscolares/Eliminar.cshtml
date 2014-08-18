@@ -1,0 +1,71 @@
+﻿@model Extra.Models.ExtraEscolares
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Eliminar</title>
+</head>
+<body>
+    <h3>¿Estas seguro de eliminar?</h3>
+    <fieldset>
+        <legend>ExtraEscolares</legend>
+    
+
+        <div class="display-field">
+            @Html.HiddenFor(model => model.idExtraescolar)
+        </div>
+    
+        <div class="display-label">Actividad</div>
+        <div class="display-field">
+            @Html.DropDownList("idActividad")
+        </div>
+    
+        <div class="display-label">Instructor</div>
+        <div class="display-field">
+            @Html.DropDownList("idInstructor")
+        </div>
+    
+        <div class="display-label">horario lunes</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.horalunes)
+        </div>
+    
+        <div class="display-label">horario martes</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.horamartes)
+        </div>
+    
+        <div class="display-label">horario miercoles</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.horamiercoles)
+        </div>
+    
+        <div class="display-label">horario jueves</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.hormajueves)
+        </div>
+    
+        <div class="display-label">horario viernes</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.horaviernes)
+        </div>
+    
+        <div class="display-label">Periodo</div>
+        <div class="display-field">
+            @Html.DropDownList("idPeriodo")
+        </div>
+    </fieldset>
+    @using (Html.BeginForm()) {
+        <p>
+            <input type="submit" value="Eliminar" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </p>
+    }
+
+</body>
+</html>

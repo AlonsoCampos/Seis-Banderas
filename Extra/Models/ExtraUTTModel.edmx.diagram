@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a7cc1311120349f1a9165c19f1d478d1" Name="Diagrama1">
+        <EntityTypeShape EntityType="ExtraUTTModel.Actividad" Width="1.5" PointX="0.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExtraUTTModel.ExtraEscolares" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExtraUTTModel.Instructor" Width="1.5" PointX="0.75" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ExtraUTTModel.Periodo" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="ExtraUTTModel.FK_ExtraEscolares_Actividad" ManuallyRouted="false" />
+        <AssociationConnector Association="ExtraUTTModel.FK_ExtraEscolares_Instructor" ManuallyRouted="false" />
+        <AssociationConnector Association="ExtraUTTModel.FK_ExtraEscolares_Periodo" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

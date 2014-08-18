@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ExtraUTTModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+  <EntityContainer Name="ExtraUTTEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Actividad" EntityType="ExtraUTTModel.Actividad" />
+    <EntitySet Name="ExtraEscolares" EntityType="ExtraUTTModel.ExtraEscolares" />
+    <EntitySet Name="Instructor" EntityType="ExtraUTTModel.Instructor" />
+    <EntitySet Name="Periodo" EntityType="ExtraUTTModel.Periodo" />
+    <AssociationSet Name="FK_ExtraEscolares_Actividad" Association="ExtraUTTModel.FK_ExtraEscolares_Actividad">
+      <End Role="Actividad" EntitySet="Actividad" />
+      <End Role="ExtraEscolares" EntitySet="ExtraEscolares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExtraEscolares_Instructor" Association="ExtraUTTModel.FK_ExtraEscolares_Instructor">
+      <End Role="Instructor" EntitySet="Instructor" />
+      <End Role="ExtraEscolares" EntitySet="ExtraEscolares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExtraEscolares_Periodo" Association="ExtraUTTModel.FK_ExtraEscolares_Periodo">
+      <End Role="Periodo" EntitySet="Periodo" />
+      <End Role="ExtraEscolares" EntitySet="ExtraEscolares" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Actividad">
+    <Key>
+      <PropertyRef Name="idActividad" />
+    </Key>
+    <Property Name="idActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+    <Property Name="Disponible" Type="Boolean" Nullable="false" />
+    <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+    <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ExtraEscolares" Relationship="ExtraUTTModel.FK_ExtraEscolares_Actividad" FromRole="Actividad" ToRole="ExtraEscolares" />
+  </EntityType>
+  <EntityType Name="ExtraEscolares">
+    <Key>
+      <PropertyRef Name="idExtraescolar" />
+    </Key>
+    <Property Name="idExtraescolar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="idActividad" Type="Int32" Nullable="false" />
+    <Property Name="idInstructor" Type="Int32" Nullable="false" />
+    <Property Name="horalunes" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="horamartes" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="horamiercoles" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="hormajueves" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="horaviernes" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+    <Property Name="idPeriodo" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Actividad" Relationship="ExtraUTTModel.FK_ExtraEscolares_Actividad" FromRole="ExtraEscolares" ToRole="Actividad" />
+    <NavigationProperty Name="Instructor" Relationship="ExtraUTTModel.FK_ExtraEscolares_Instructor" FromRole="ExtraEscolares" ToRole="Instructor" />
+    <NavigationProperty Name="Periodo" Relationship="ExtraUTTModel.FK_ExtraEscolares_Periodo" FromRole="ExtraEscolares" ToRole="Periodo" />
+  </EntityType>
+  <EntityType Name="Instructor">
+    <Key>
+      <PropertyRef Name="IdInstructor" />
+    </Key>
+    <Property Name="IdInstructor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="35" Unicode="false" FixedLength="false" />
+    <Property Name="CorreoElectronico" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="ExtraEscolares" Relationship="ExtraUTTModel.FK_ExtraEscolares_Instructor" FromRole="Instructor" ToRole="ExtraEscolares" />
+  </EntityType>
+  <EntityType Name="Periodo">
+    <Key>
+      <PropertyRef Name="IdPeriodo" />
+    </Key>
+    <Property Name="IdPeriodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+    <Property Name="Activo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ExtraEscolares" Relationship="ExtraUTTModel.FK_ExtraEscolares_Periodo" FromRole="Periodo" ToRole="ExtraEscolares" />
+  </EntityType>
+  <Association Name="FK_ExtraEscolares_Actividad">
+    <End Role="Actividad" Type="ExtraUTTModel.Actividad" Multiplicity="1" />
+    <End Role="ExtraEscolares" Type="ExtraUTTModel.ExtraEscolares" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Actividad">
+        <PropertyRef Name="idActividad" />
+      </Principal>
+      <Dependent Role="ExtraEscolares">
+        <PropertyRef Name="idActividad" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExtraEscolares_Instructor">
+    <End Role="Instructor" Type="ExtraUTTModel.Instructor" Multiplicity="1" />
+    <End Role="ExtraEscolares" Type="ExtraUTTModel.ExtraEscolares" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instructor">
+        <PropertyRef Name="IdInstructor" />
+      </Principal>
+      <Dependent Role="ExtraEscolares">
+        <PropertyRef Name="idInstructor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExtraEscolares_Periodo">
+    <End Role="Periodo" Type="ExtraUTTModel.Periodo" Multiplicity="1" />
+    <End Role="ExtraEscolares" Type="ExtraUTTModel.ExtraEscolares" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Periodo">
+        <PropertyRef Name="IdPeriodo" />
+      </Principal>
+      <Dependent Role="ExtraEscolares">
+        <PropertyRef Name="idPeriodo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

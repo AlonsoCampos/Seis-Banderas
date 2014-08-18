@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ExtraUTTModelStoreContainer" CdmEntityContainer="ExtraUTTEntities">
+    <EntitySetMapping Name="Actividad">
+      <EntityTypeMapping TypeName="ExtraUTTModel.Actividad">
+        <MappingFragment StoreEntitySet="Actividad">
+          <ScalarProperty Name="idActividad" ColumnName="idActividad" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ExtraEscolares">
+      <EntityTypeMapping TypeName="ExtraUTTModel.ExtraEscolares">
+        <MappingFragment StoreEntitySet="ExtraEscolares">
+          <ScalarProperty Name="idExtraescolar" ColumnName="idExtraescolar" />
+          <ScalarProperty Name="idActividad" ColumnName="idActividad" />
+          <ScalarProperty Name="idInstructor" ColumnName="idInstructor" />
+          <ScalarProperty Name="horalunes" ColumnName="horalunes" />
+          <ScalarProperty Name="horamartes" ColumnName="horamartes" />
+          <ScalarProperty Name="horamiercoles" ColumnName="horamiercoles" />
+          <ScalarProperty Name="hormajueves" ColumnName="hormajueves" />
+          <ScalarProperty Name="horaviernes" ColumnName="horaviernes" />
+          <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instructor">
+      <EntityTypeMapping TypeName="ExtraUTTModel.Instructor">
+        <MappingFragment StoreEntitySet="Instructor">
+          <ScalarProperty Name="IdInstructor" ColumnName="IdInstructor" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+          <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Periodo">
+      <EntityTypeMapping TypeName="ExtraUTTModel.Periodo">
+        <MappingFragment StoreEntitySet="Periodo">
+          <ScalarProperty Name="IdPeriodo" ColumnName="IdPeriodo" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Activo" ColumnName="Activo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

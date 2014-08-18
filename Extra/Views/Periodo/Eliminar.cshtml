@@ -1,0 +1,37 @@
+﻿@model Extra.Models.Periodo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Eliminar</title>
+</head>
+<body>
+    <h3>Estas seguro de eliminar</h3>
+    <fieldset>
+        <legend>Periodo</legend>
+        
+
+        <div class="display-label">Nombre</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Nombre)
+        </div>
+    
+        <div class="display-label">Activo</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Activo)
+        </div>
+    </fieldset>
+    @using (Html.BeginForm()) {
+        <p>
+            <input type="submit" value="Eliminar" /> |
+            @Html.ActionLink("Regresar", "Index")
+        </p>
+    }
+
+</body>
+</html>

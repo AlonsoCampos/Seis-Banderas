@@ -1,0 +1,125 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Bienvenido</title>
+    <!-- Los links nos indican hojas de estilo
+         los scripts nos indican archivos .js        
+         -->
+    <!--# no indica que el el id -->
+    <link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.js")"></script>
+    <script src="@Url.Content("/Scripts/jquery-ui-1.8.20.min.js")"></script>
+</head>
+<body>
+    <div>
+        @Html.ActionLink("Ir a Home","Actividad")
+        @Html.ActionLink("Instructores", "InstructorIndex","Instructor")
+        @Html.ActionLink("Periodos", "Index", "Periodo")
+        @Html.ActionLink("Extraescolares", "Index","ExtraEscolares")
+        @Html.ActionLink("Instructores", "Index","Instructores")
+    </div>
+
+    <div id="secciones" style="background-color:whitesmoke">   
+        <h3>Secci&oacute; uno</h3>    
+            <div>
+            <p style ="text-align:justify;">    
+
+                Unidad de Inteligencia de Negocios  http://inteligenciadenegociostic.blogspot.mx/2013/04/inteligencia-de-negocio.html
+                <br />
+                Unidad de Transacciones http://transaccionestic.blogspot.mx/2013/04/transacciones.html
+                <br />
+                Unidad de Base de Datos Orientada a Objetos http://basesdedatosorientadasaobejtosti.blogspot.mx/2013/04/lenguaje-oql.html
+                <br />
+                Unidad de Base de Datos Distribuidas http://basededatosdistribuidastic.blogspot.mx/2013/04/bases-de-datos-distribuidas.html
+                <br />
+                By John C Itanicucla, 
+                <br />
+                Delivering Bussines Intelligence with SQL server 2005
+                <br />
+                Practival Bussines Intelligence with SQL Server 2005
+                <br />
+            </p>            
+            </div>
+        <h3 style="">Secci&oacute; dos</h3>        
+            <div>            
+            <p style ="text-align:right;">
+
+                Unidad de Inteligencia de Negocios  http://inteligenciadenegociostic.blogspot.mx/2013/04/inteligencia-de-negocio.html
+                <br />
+                Unidad de Transacciones http://transaccionestic.blogspot.mx/2013/04/transacciones.html
+                <br />
+                Unidad de Base de Datos Orientada a Objetos http://basesdedatosorientadasaobejtosti.blogspot.mx/2013/04/lenguaje-oql.html
+                <br />
+                Unidad de Base de Datos Distribuidas http://basededatosdistribuidastic.blogspot.mx/2013/04/bases-de-datos-distribuidas.html
+                <br />
+                By John C Itanicucla, 
+                <br />
+                Delivering Bussines Intelligence with SQL server 2005
+                <br />
+                Practival Bussines Intelligence with SQL Server 2005
+                <br />
+            </p>
+            </div>
+        <h3 style="">Secci&oacute; tres</h3>            
+            <div>
+            <p style ="text-align:center">
+
+                Unidad de Inteligencia de Negocios  http://inteligenciadenegociostic.blogspot.mx/2013/04/inteligencia-de-negocio.html
+                <br />
+                Unidad de Transacciones http://transaccionestic.blogspot.mx/2013/04/transacciones.html
+                <br />
+                Unidad de Base de Datos Orientada a Objetos http://basesdedatosorientadasaobejtosti.blogspot.mx/2013/04/lenguaje-oql.html
+                <br />
+                Unidad de Base de Datos Distribuidas http://basededatosdistribuidastic.blogspot.mx/2013/04/bases-de-datos-distribuidas.html
+                <br />
+                By John C Itanicucla, 
+                <br />
+                Delivering Bussines Intelligence with SQL server 2005
+                <br />
+                Practival Bussines Intelligence with SQL Server 2005
+                <br />
+            </p>
+            </div>     
+    </div>
+
+    <div id="tabs">
+        <ul>
+            <li> <a href="#tab-1">Uno</a></li>
+            <li> <a href="#tab-2">Dos</a></li>
+            <li> <a href="#tab-3">Tres</a></li>
+        </ul>
+        <div id="tab-1">
+            <p>Uno</p>
+        </div>
+         
+        <div id="tab-2">
+            <p>Dos</p>
+        </div>
+
+        <div id="tab-3">
+            <p>Tres</p>
+        </div>
+    </div>
+
+
+
+</body>
+    <script>
+        //Funcion anonima
+        $(function ()
+        {
+            $("#secciones").accordion();
+
+        });
+        $(function () {
+            $("#tabs").tabs();
+        });
+
+    </script>
+
+</html>

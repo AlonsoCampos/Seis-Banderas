@@ -1,0 +1,63 @@
+﻿@model IEnumerable<Extra.Models.Actividad>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Actividad</title>
+    
+</head>
+<body style="background-color:whitesmoke">
+    <p>
+        @Html.ActionLink("Nueva Actividad", "Agregar")
+    </p>
+    <fieldset>
+    <h2 style="text-align:center">Registros</h2>
+    
+    <table>
+        <tr>
+            <th>
+                Nombre
+            </th>
+            <th>
+                Disponible
+            </th>
+            <th>
+                FechaCreacion
+            </th>
+            <th>
+                FechaModificacion
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Disponible)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaModificacion)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "Modificar", new { id=item.idActividad }) |
+                @Html.ActionLink("Detalles", "Detalles", new { id=item.idActividad }) |
+                @Html.ActionLink("Eliminar", "Eliminar", new {id=item.idActividad })
+            </td>
+        </tr>
+    }
+    
+    </table>
+</fieldset>
+</body>
+</html>

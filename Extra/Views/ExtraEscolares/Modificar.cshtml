@@ -1,0 +1,102 @@
+﻿@model Extra.Models.ExtraEscolares
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Modificar</title>
+</head>
+<body>
+    <script src="@Url.Content("~/Scripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+    
+    @using (Html.BeginForm()) {
+        @Html.ValidationSummary(true)
+        <fieldset>
+            <legend>ExtraEscolares</legend>
+    
+            <div class="editor-label">
+                @Html.HiddenFor(model => model.idExtraescolar)
+            </div>
+            
+    
+            <div class="editor-label">
+                @Html.Label("Actividad")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("idActividad")
+                @Html.ValidationMessageFor(model => model.Actividad)
+            </div>
+    
+            <div class="editor-label">
+                @Html.Label("Instructor")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("idInstructor")
+                @Html.ValidationMessageFor(model => model.Instructor)
+            </div>
+    
+            <div class="editor-label">
+                @Html.Label("Hora Lunes")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.horalunes)
+                @Html.ValidationMessageFor(model => model.horalunes)
+            </div>
+    
+            <div class="editor-label">
+                @Html.Label("Hora Martes")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.horamartes)
+                @Html.ValidationMessageFor(model => model.horamartes)
+            </div>
+    
+            <div class="editor-label">
+                @Html.Label("Hora Miercoles")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.horamiercoles)
+                @Html.ValidationMessageFor(model => model.horamiercoles)
+            </div>
+    
+            <div class="editor-label">
+                @Html.Label("Hora Jueves")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.hormajueves)
+                @Html.ValidationMessageFor(model => model.hormajueves)
+            </div>
+    
+            <div class="editor-label">
+                @Html.Label("Hora Viernes")
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.horaviernes)
+                @Html.ValidationMessageFor(model => model.horaviernes)
+            </div>
+    
+            <div class="editor-label">
+                @Html.Label("Periodo")
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("idPeriodo")
+                @Html.ValidationMessageFor(model => model.Periodo)
+            </div>
+    
+            <p>
+                <input type="submit" value="Guardar" />
+            </p>
+        </fieldset>
+    }
+    
+    <div>
+        @Html.ActionLink("Regresar", "Index")
+    </div>
+</body>
+</html>

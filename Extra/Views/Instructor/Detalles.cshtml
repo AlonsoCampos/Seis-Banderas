@@ -1,0 +1,47 @@
+﻿@model Extra.Models.Instructor
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Detalles</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Instructor</legend>
+    
+
+        <div class="display-field">
+            @Html.HiddenFor(model => model.IdInstructor)
+        </div>
+    
+        <div class="display-label">Nombre</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Nombre)
+        </div>
+    
+        <div class="display-label">Correo Electronico</div>
+        <div class="display-field"> 
+            @Html.DisplayFor(model => model.CorreoElectronico)
+        </div>
+    
+        <div class="display-label">Activo</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Activo)
+        </div>
+    
+        <div class="display-label">Fecha Ingreso</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.FechaIngreso)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Modificar", "Modificar", new { id=Model.IdInstructor}) |
+        @Html.ActionLink("Regresar", "InstructorIndex")
+    </p>
+</body>
+</html>

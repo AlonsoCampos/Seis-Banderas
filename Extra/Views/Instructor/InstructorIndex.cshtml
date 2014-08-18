@@ -1,0 +1,64 @@
+﻿@model IEnumerable<Extra.Models.Instructor>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>InstructorIndex</title>
+</head>
+<body>
+    <p>
+        @Html.ActionLink("Registar Nuevo", "AgregarInstructor")
+    </p>
+    <table>
+        <tr>
+            <th>
+                IdInstructor
+            </th>
+            <th>
+                Nombre
+            </th>
+            <th>
+                CorreoElectronico
+            </th>
+            <th>
+                Activo
+            </th>
+            <th>
+                FechaIngreso
+            </th>
+            <th></th>
+        </tr>
+    
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdInstructor)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CorreoElectronico)
+            </td>
+            <td>
+                @Html.CheckBoxFor(modelItem =>item.Activo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.ActionLink("Modificar", "Modificar", new { id=item.IdInstructor }) 
+                @Html.ActionLink("Detalles", "Detalles", new { id=item.IdInstructor }) 
+                @Html.ActionLink("Eliminar", "Eliminar", new { id=item.IdInstructor})
+            </td>
+        </tr>
+    }
+    
+    </table>
+</body>
+</html>

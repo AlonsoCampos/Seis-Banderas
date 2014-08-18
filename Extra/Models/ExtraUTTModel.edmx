@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="ExtraUTTModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="ExtraUTTModelStoreContainer">
+          <EntitySet Name="Actividad" EntityType="ExtraUTTModel.Store.Actividad" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ExtraEscolares" EntityType="ExtraUTTModel.Store.ExtraEscolares" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Instructor" EntityType="ExtraUTTModel.Store.Instructor" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Periodo" EntityType="ExtraUTTModel.Store.Periodo" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_ExtraEscolares_Actividad" Association="ExtraUTTModel.Store.FK_ExtraEscolares_Actividad">
+            <End Role="Actividad" EntitySet="Actividad" />
+            <End Role="ExtraEscolares" EntitySet="ExtraEscolares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtraEscolares_Instructor" Association="ExtraUTTModel.Store.FK_ExtraEscolares_Instructor">
+            <End Role="Instructor" EntitySet="Instructor" />
+            <End Role="ExtraEscolares" EntitySet="ExtraEscolares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtraEscolares_Periodo" Association="ExtraUTTModel.Store.FK_ExtraEscolares_Periodo">
+            <End Role="Periodo" EntitySet="Periodo" />
+            <End Role="ExtraEscolares" EntitySet="ExtraEscolares" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Actividad">
+          <Key>
+            <PropertyRef Name="idActividad" />
+          </Key>
+          <Property Name="idActividad" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="Disponible" Type="bit" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" />
+          <Property Name="FechaModificacion" Type="datetime" />
+        </EntityType>
+        <EntityType Name="ExtraEscolares">
+          <Key>
+            <PropertyRef Name="idExtraescolar" />
+          </Key>
+          <Property Name="idExtraescolar" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="idActividad" Type="int" Nullable="false" />
+          <Property Name="idInstructor" Type="int" Nullable="false" />
+          <Property Name="horalunes" Type="varchar" MaxLength="5" />
+          <Property Name="horamartes" Type="varchar" MaxLength="5" />
+          <Property Name="horamiercoles" Type="varchar" MaxLength="5" />
+          <Property Name="hormajueves" Type="varchar" MaxLength="5" />
+          <Property Name="horaviernes" Type="varchar" MaxLength="5" />
+          <Property Name="idPeriodo" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Instructor">
+          <Key>
+            <PropertyRef Name="IdInstructor" />
+          </Key>
+          <Property Name="IdInstructor" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="35" />
+          <Property Name="CorreoElectronico" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="FechaIngreso" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Periodo">
+          <Key>
+            <PropertyRef Name="IdPeriodo" />
+          </Key>
+          <Property Name="IdPeriodo" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_ExtraEscolares_Actividad">
+          <End Role="Actividad" Type="ExtraUTTModel.Store.Actividad" Multiplicity="1" />
+          <End Role="ExtraEscolares" Type="ExtraUTTModel.Store.ExtraEscolares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actividad">
+              <PropertyRef Name="idActividad" />
+            </Principal>
+            <Dependent Role="ExtraEscolares">
+              <PropertyRef Name="idActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExtraEscolares_Instructor">
+          <End Role="Instructor" Type="ExtraUTTModel.Store.Instructor" Multiplicity="1" />
+          <End Role="ExtraEscolares" Type="ExtraUTTModel.Store.ExtraEscolares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructor">
+              <PropertyRef Name="IdInstructor" />
+            </Principal>
+            <Dependent Role="ExtraEscolares">
+              <PropertyRef Name="idInstructor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExtraEscolares_Periodo">
+          <End Role="Periodo" Type="ExtraUTTModel.Store.Periodo" Multiplicity="1" />
+          <End Role="ExtraEscolares" Type="ExtraUTTModel.Store.ExtraEscolares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periodo">
+              <PropertyRef Name="IdPeriodo" />
+            </Principal>
+            <Dependent Role="ExtraEscolares">
+              <PropertyRef Name="idPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ExtraUTTModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="ExtraUTTEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Actividad" EntityType="ExtraUTTModel.Actividad" />
+          <EntitySet Name="ExtraEscolares" EntityType="ExtraUTTModel.ExtraEscolares" />
+          <EntitySet Name="Instructor" EntityType="ExtraUTTModel.Instructor" />
+          <EntitySet Name="Periodo" EntityType="ExtraUTTModel.Periodo" />
+          <AssociationSet Name="FK_ExtraEscolares_Actividad" Association="ExtraUTTModel.FK_ExtraEscolares_Actividad">
+            <End Role="Actividad" EntitySet="Actividad" />
+            <End Role="ExtraEscolares" EntitySet="ExtraEscolares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtraEscolares_Instructor" Association="ExtraUTTModel.FK_ExtraEscolares_Instructor">
+            <End Role="Instructor" EntitySet="Instructor" />
+            <End Role="ExtraEscolares" EntitySet="ExtraEscolares" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ExtraEscolares_Periodo" Association="ExtraUTTModel.FK_ExtraEscolares_Periodo">
+            <End Role="Periodo" EntitySet="Periodo" />
+            <End Role="ExtraEscolares" EntitySet="ExtraEscolares" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Actividad">
+          <Key>
+            <PropertyRef Name="idActividad" />
+          </Key>
+          <Property Name="idActividad" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Disponible" Type="Boolean" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Precision="3" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExtraEscolares" Relationship="ExtraUTTModel.FK_ExtraEscolares_Actividad" FromRole="Actividad" ToRole="ExtraEscolares" />
+        </EntityType>
+        <EntityType Name="ExtraEscolares">
+          <Key>
+            <PropertyRef Name="idExtraescolar" />
+          </Key>
+          <Property Name="idExtraescolar" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="idActividad" Type="Int32" Nullable="false" />
+          <Property Name="idInstructor" Type="Int32" Nullable="false" />
+          <Property Name="horalunes" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="horamartes" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="horamiercoles" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="hormajueves" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="horaviernes" Type="String" MaxLength="5" Unicode="false" FixedLength="false" />
+          <Property Name="idPeriodo" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Actividad" Relationship="ExtraUTTModel.FK_ExtraEscolares_Actividad" FromRole="ExtraEscolares" ToRole="Actividad" />
+          <NavigationProperty Name="Instructor" Relationship="ExtraUTTModel.FK_ExtraEscolares_Instructor" FromRole="ExtraEscolares" ToRole="Instructor" />
+          <NavigationProperty Name="Periodo" Relationship="ExtraUTTModel.FK_ExtraEscolares_Periodo" FromRole="ExtraEscolares" ToRole="Periodo" />
+        </EntityType>
+        <EntityType Name="Instructor">
+          <Key>
+            <PropertyRef Name="IdInstructor" />
+          </Key>
+          <Property Name="IdInstructor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="35" Unicode="false" FixedLength="false" />
+          <Property Name="CorreoElectronico" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="FechaIngreso" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="ExtraEscolares" Relationship="ExtraUTTModel.FK_ExtraEscolares_Instructor" FromRole="Instructor" ToRole="ExtraEscolares" />
+        </EntityType>
+        <EntityType Name="Periodo">
+          <Key>
+            <PropertyRef Name="IdPeriodo" />
+          </Key>
+          <Property Name="IdPeriodo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ExtraEscolares" Relationship="ExtraUTTModel.FK_ExtraEscolares_Periodo" FromRole="Periodo" ToRole="ExtraEscolares" />
+        </EntityType>
+        <Association Name="FK_ExtraEscolares_Actividad">
+          <End Role="Actividad" Type="ExtraUTTModel.Actividad" Multiplicity="1" />
+          <End Role="ExtraEscolares" Type="ExtraUTTModel.ExtraEscolares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Actividad">
+              <PropertyRef Name="idActividad" />
+            </Principal>
+            <Dependent Role="ExtraEscolares">
+              <PropertyRef Name="idActividad" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExtraEscolares_Instructor">
+          <End Role="Instructor" Type="ExtraUTTModel.Instructor" Multiplicity="1" />
+          <End Role="ExtraEscolares" Type="ExtraUTTModel.ExtraEscolares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Instructor">
+              <PropertyRef Name="IdInstructor" />
+            </Principal>
+            <Dependent Role="ExtraEscolares">
+              <PropertyRef Name="idInstructor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ExtraEscolares_Periodo">
+          <End Role="Periodo" Type="ExtraUTTModel.Periodo" Multiplicity="1" />
+          <End Role="ExtraEscolares" Type="ExtraUTTModel.ExtraEscolares" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Periodo">
+              <PropertyRef Name="IdPeriodo" />
+            </Principal>
+            <Dependent Role="ExtraEscolares">
+              <PropertyRef Name="idPeriodo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ExtraUTTModelStoreContainer" CdmEntityContainer="ExtraUTTEntities">
+          <EntitySetMapping Name="Actividad">
+            <EntityTypeMapping TypeName="ExtraUTTModel.Actividad">
+              <MappingFragment StoreEntitySet="Actividad">
+                <ScalarProperty Name="idActividad" ColumnName="idActividad" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Disponible" ColumnName="Disponible" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExtraEscolares">
+            <EntityTypeMapping TypeName="ExtraUTTModel.ExtraEscolares">
+              <MappingFragment StoreEntitySet="ExtraEscolares">
+                <ScalarProperty Name="idExtraescolar" ColumnName="idExtraescolar" />
+                <ScalarProperty Name="idActividad" ColumnName="idActividad" />
+                <ScalarProperty Name="idInstructor" ColumnName="idInstructor" />
+                <ScalarProperty Name="horalunes" ColumnName="horalunes" />
+                <ScalarProperty Name="horamartes" ColumnName="horamartes" />
+                <ScalarProperty Name="horamiercoles" ColumnName="horamiercoles" />
+                <ScalarProperty Name="hormajueves" ColumnName="hormajueves" />
+                <ScalarProperty Name="horaviernes" ColumnName="horaviernes" />
+                <ScalarProperty Name="idPeriodo" ColumnName="idPeriodo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Instructor">
+            <EntityTypeMapping TypeName="ExtraUTTModel.Instructor">
+              <MappingFragment StoreEntitySet="Instructor">
+                <ScalarProperty Name="IdInstructor" ColumnName="IdInstructor" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CorreoElectronico" ColumnName="CorreoElectronico" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="FechaIngreso" ColumnName="FechaIngreso" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Periodo">
+            <EntityTypeMapping TypeName="ExtraUTTModel.Periodo">
+              <MappingFragment StoreEntitySet="Periodo">
+                <ScalarProperty Name="IdPeriodo" ColumnName="IdPeriodo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

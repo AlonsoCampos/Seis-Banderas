@@ -1,0 +1,48 @@
+﻿@model Extra.Models.Actividad
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Detalles</title>
+</head>
+<body>
+    <fieldset>
+        
+        <legend>Actividad</legend>
+    
+        <div class="display-label">idActividad</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.idActividad)
+        </div>
+    
+        <div class="display-label">Nombre</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Nombre)
+        </div>
+    
+        <div class="display-label">Disponible</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Disponible)
+        </div>
+    
+        <div class="display-label">Fecha Creaci&oacute;n</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </div>
+    
+        <div class="display-label">Fecha Modificaci&oacute;n</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.FechaModificacion)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Modificar", "Modificar", new { id=Model.idActividad }) |
+        @Html.ActionLink("Regresar", "Actividad")
+    </p>
+</body>
+</html>

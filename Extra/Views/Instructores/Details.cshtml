@@ -1,0 +1,40 @@
+﻿@model Extra.Models.Instructor
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Instructor</legend>
+
+    <div class="display-label">IdInstructor</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.IdInstructor)
+    </div>
+
+    <div class="display-label">Nombre</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nombre)
+    </div>
+
+    <div class="display-label">CorreoElectronico</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.CorreoElectronico)
+    </div>
+
+    <div class="display-label">Activo</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Activo)
+    </div>
+
+    <div class="display-label">FechaIngreso</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FechaIngreso)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

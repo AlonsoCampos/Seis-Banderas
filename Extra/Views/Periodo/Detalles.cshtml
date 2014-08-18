@@ -1,0 +1,36 @@
+﻿@model Extra.Models.Periodo
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Detalles</title>
+</head>
+<body>
+    <fieldset>
+        <legend>Periodo</legend>
+    
+        <div class="editor-label">
+        @Html.HiddenFor(model => model.IdPeriodo)
+        </div>
+    
+        <div class="display-label">Nombre</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Nombre)
+        </div>
+    
+        <div class="display-label">Activo</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Activo)
+        </div>
+    </fieldset>
+    <p>
+        @Html.ActionLink("Modificar", "Modificar", new { id=Model.IdPeriodo }) |
+        @Html.ActionLink("Regresar", "Index")
+    </p>
+</body>
+</html>

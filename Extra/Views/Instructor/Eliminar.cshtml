@@ -1,0 +1,50 @@
+﻿@model Extra.Models.Instructor
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Eliminar</title>
+</head>
+<body>
+    <h3>¿Estas seguro de eliminar?</h3>
+    <fieldset>
+        <legend>Instructor</legend>
+    
+        <div class="display-field">
+            @Html.HiddenFor(model => model.IdInstructor)
+        </div>
+    
+        <div class="display-label">Nombre</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Nombre)
+        </div>
+    
+        <div class="display-label">Correo Electronico</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CorreoElectronico)
+        </div>
+    
+        <div class="display-label">Activo</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Activo)
+        </div>
+    
+        <div class="display-label">Fecha Ingreso</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.FechaIngreso)
+        </div>
+    </fieldset>
+    @using (Html.BeginForm()) {
+        <p>
+            <input type="submit" value="Eliminar" /> |
+            @Html.ActionLink("Regresar", "InstructorIndex")
+        </p>
+    }
+
+</body>
+</html>

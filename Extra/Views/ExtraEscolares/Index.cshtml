@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Extra.Models.ExtraEscolares>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Extraescolares</h2>
+
+<p>
+    @Html.ActionLink("Agregar nueva Actividad Extraescolar", "Agregar")
+</p>
+<table style="text-align:center" title="Actividades Extraescolares" >
+    <tr> 
+        <th>
+            Actividad
+        </th>
+        <th>
+            Instructor
+        </th>
+        <th>
+            hora lunes
+        </th>
+        <th>
+            hora martes
+        </th>
+        <th>
+            hora miercoles
+        </th>
+        <th>
+            hora jueves
+        </th>
+        <th>
+            hora viernes
+        </th>
+        <th>
+            Periodo
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Actividad.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Instructor.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horalunes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horamartes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horamiercoles)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hormajueves)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.horaviernes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Periodo.Nombre)
+        </td>
+        <td>
+            @Html.ActionLink("Modificar", "Modificar", new {  id=item.idExtraescolar }) |
+            @Html.ActionLink("Detalles", "Detalles", new {  id=item.idExtraescolar}) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.idExtraescolar})
+        </td>
+    </tr>
+}
+
+</table>
